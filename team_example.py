@@ -42,12 +42,13 @@ team = RoundRobinGroupChat([primary_agent, critic_agent], termination_condition=
 
 # Function to run the team
 async def run_team():
-    async for message in team.run_stream(task="Write a short poem about the fall season."):
-        if isinstance(message, TaskResult):
-            print(f"\nStop Reason: {message.stop_reason}")
-        else:
-            print(f"\n{message}")
+#     async for message in team.run_stream(task="Write a short poem about the fall season."):
+#         if isinstance(message, TaskResult):
+#             print(f"\nStop Reason: {message.stop_reason}")
+#         else:
+#             print(f"\n{message}")
 
+    await Console(team.run_stream(task="Write a short poem about the fall season."))  # Stream the messages to the console.
 
 if __name__ == "__main__":
     asyncio.run(run_team())
